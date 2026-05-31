@@ -109,12 +109,16 @@ async def handle_url(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
 
+        title = info.get('title', "Noma'lum")
+        uploader = info.get('uploader', "Noma'lum")
+        view_count = info.get('view_count', 0)
+
         await msg.edit_text(
             f"✅ <b>Video topildi!</b>\n\n"
-            f"📌 <b>Sarlavha:</b> {info.get('title', 'Noma\\'lum')[:60]}\n"
-            f"👤 <b>Kanal:</b> {info.get('uploader', 'Noma\\'lum')}\n"
+            f"📌 <b>Sarlavha:</b> {title[:60]}\n"
+            f"👤 <b>Kanal:</b> {uploader}\n"
             f"⏱ <b>Davomiyligi:</b> {minutes}:{seconds:02d}\n"
-            f"👁 <b>Ko'rishlar:</b> {info.get('view_count', 0):,}\n\n"
+            f"👁 <b>Ko'rishlar:</b> {view_count:,}\n\n"
             f"📂 <b>Format tanlang:</b>",
             reply_markup=reply_markup,
             parse_mode="HTML",
@@ -284,12 +288,16 @@ async def handle_back(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
+    title = info.get('title', "Noma'lum")
+    uploader = info.get('uploader', "Noma'lum")
+    view_count = info.get('view_count', 0)
+
     await query.edit_message_text(
         f"✅ <b>Video topildi!</b>\n\n"
-        f"📌 <b>Sarlavha:</b> {info.get('title', 'Noma\\'lum')[:60]}\n"
-        f"👤 <b>Kanal:</b> {info.get('uploader', 'Noma\\'lum')}\n"
+        f"📌 <b>Sarlavha:</b> {title[:60]}\n"
+        f"👤 <b>Kanal:</b> {uploader}\n"
         f"⏱ <b>Davomiyligi:</b> {minutes}:{seconds:02d}\n"
-        f"👁 <b>Ko'rishlar:</b> {info.get('view_count', 0):,}\n\n"
+        f"👁 <b>Ko'rishlar:</b> {view_count:,}\n\n"
         f"📂 <b>Format tanlang:</b>",
         reply_markup=reply_markup,
         parse_mode="HTML",
